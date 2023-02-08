@@ -9,7 +9,7 @@ export class Contacts extends Component {
       data,
       onInput,
       deleteItem,
-      willUnmount,
+      isInputChange,
       handleMouseEnter,
       handleFocus,
     } = this.props;
@@ -29,7 +29,7 @@ export class Contacts extends Component {
             return (
               <ContactsItem
                 handleMouseEnter={handleMouseEnter}
-                willUnmount={willUnmount}
+                isInputChange={isInputChange}
                 key={element.id}
                 name={element.name}
                 number={element.number}
@@ -53,7 +53,7 @@ Contacts.propTypes = {
   ).isRequired,
   onInput: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
-  willUnmount: PropTypes.bool.isRequired,
+  isInputChange: PropTypes.bool.isRequired,
   handleMouseEnter: PropTypes.func.isRequired,
   handleFocus: PropTypes.func.isRequired,
 };

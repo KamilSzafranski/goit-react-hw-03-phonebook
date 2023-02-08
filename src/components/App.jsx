@@ -95,7 +95,7 @@ export class App extends Component {
         <Contacts
           handleFocus={this.handleFocus}
           handleMouseEnter={this.handleMouseEnter}
-          willUnmount={this.state.isInputChange}
+          isInputChange={this.state.isInputChange}
           data={this.renderFilteredData()}
           filter={this.state.filter}
           onInput={this.handleInput}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export class ContactsItem extends Component {
   componentWillUnmount() {
-    if (!this.props.willUnmount) {
+    if (!this.props.isInputChange) {
       alert(`Contacts: ${this.props.name} was remove`);
     }
   }
@@ -32,4 +32,5 @@ ContactsItem.propTypes = {
   number: PropTypes.string,
   handleDelete: PropTypes.func.isRequired,
   handleMouseEnter: PropTypes.func.isRequired,
+  isInputChange: PropTypes.bool.isRequired,
 };
