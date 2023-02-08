@@ -5,7 +5,14 @@ import { ContactsItem } from 'components/ContactsItem/ContacsItem';
 
 export class Contacts extends Component {
   render() {
-    const { data, handler, deleteItem } = this.props;
+    const {
+      data,
+      onInput,
+      deleteItem,
+      willUnmount,
+      handleMouseEnter,
+      handleFocus,
+    } = this.props;
     return (
       <div className={css.box}>
         <h2 className={css.title}>Contacts</h2>
@@ -13,13 +20,16 @@ export class Contacts extends Component {
         <input
           type="text"
           name="filter"
-          onChange={handler}
+          onChange={onInput}
           className={css.input}
+          onFocus={handleFocus}
         />
         <ul>
           {data.map(element => {
             return (
               <ContactsItem
+                handleMouseEnter={handleMouseEnter}
+                willUnmount={willUnmount}
                 key={element.id}
                 name={element.name}
                 number={element.number}
@@ -41,6 +51,9 @@ Contacts.propTypes = {
       number: PropTypes.string,
     })
   ).isRequired,
-  handler: PropTypes.func.isRequired,
+  onInput: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
+  willUnmount: PropTypes.bool.isRequired,
+  handleMouseEnter: PropTypes.func.isRequired,
+  handleFocus: PropTypes.func.isRequired,
 };

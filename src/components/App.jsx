@@ -9,6 +9,7 @@ export class App extends Component {
   state = {
     contacts: [],
     filter: '',
+    isInputChange: false,
   };
 
   componentDidMount() {
@@ -30,12 +31,25 @@ export class App extends Component {
       element.name.toLowerCase().startsWith(this.state.filter.toLowerCase())
     );
 
-  inputChange = event => {
+  handleInput = event => {
     this.setState((state, props) => {
       return {
         [event.target.name]: event.target.value,
+        isInputChange: true,
       };
     });
+  };
+
+  handleMouseEnter = event => {
+    this.setState(state => ({
+      isInputChange: false,
+    }));
+  };
+
+  handleFocus = event => {
+    this.setState(state => ({
+      isInputChange: true,
+    }));
   };
 
   deleteItem = event => {
@@ -79,9 +93,12 @@ export class App extends Component {
       <div className={css.container}>
         <Sheet add={this.addContact} />
         <Contacts
+          handleFocus={this.handleFocus}
+          handleMouseEnter={this.handleMouseEnter}
+          willUnmount={this.state.isInputChange}
           data={this.renderFilteredData()}
           filter={this.state.filter}
-          handler={this.inputChange}
+          onInput={this.handleInput}
           deleteItem={this.deleteItem}
         />
       </div>
