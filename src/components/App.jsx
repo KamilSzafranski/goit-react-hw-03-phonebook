@@ -3,7 +3,7 @@ import { Sheet } from './Sheet/Sheet';
 import { Contacts } from './Contacts/Contacts';
 import css from './App.module.css';
 import { nanoid } from 'nanoid';
-import { getStorage, saveStorage } from './Storage/Local';
+import { getStorage, saveStorage } from '../utils/utils.js';
 
 export class App extends Component {
   state = {
